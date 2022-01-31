@@ -1,0 +1,12 @@
+[build]
+  command = "next build"
+  functions = "netlify/functions"
+  publish = ".next"
+
+
+[[redirects]]
+  from = "/quote-api/*"
+  to = "https://builder-api-cache.netlify.app/.netlify/functions/quote-api/:splat"
+  status = 200
+  force = true
+
