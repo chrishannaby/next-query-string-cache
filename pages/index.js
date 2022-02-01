@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
+import GitHubLink from "../components/GitHubLink";
 
 export default function Home() {
-  const [query, setQuery] = useState();
   const [quotes, setQuotes] = useState();
 
   async function handleSubmit(e) {
@@ -29,7 +29,18 @@ export default function Home() {
         list of query params supported by the API can be found{" "}
         <a href="https://github.com/lukePeavey/quotable#list-quotes">here</a>.
       </p>
-
+      <p>
+        Source code for this site:{" "}
+        <GitHubLink repoHref="https://github.com/chrishannaby/next-query-string-cache">
+          chrishannaby/next-query-string-cache
+        </GitHubLink>
+      </p>
+      <p>
+        Source code for the builder function:{" "}
+        <GitHubLink repoHref="https://github.com/chrishannaby/builder-api-cache">
+          chrishannaby/builder-api-cache
+        </GitHubLink>
+      </p>
       <hr />
       <form onSubmit={handleSubmit}>
         <label
@@ -43,7 +54,7 @@ export default function Home() {
             type="text"
             name="query"
             id="query"
-            value="?limit=2&tags=technology&page=2"
+            defaultValue="?limit=2&tags=technology&page=2"
             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
             placeholder="?limit=2&tags=technology"
           />
