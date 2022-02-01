@@ -8,9 +8,7 @@ export default function Home() {
   async function handleSubmit(e) {
     e.preventDefault();
     const encodedQuery = btoa(query);
-    const response = await fetch(
-      `https://builder-api-cache.netlify.app/.netlify/builders/quote-api/${encodedQuery}`
-    );
+    const response = await fetch(`/quote-api/${encodedQuery}`);
     const data = await response.json();
     setQuotes(data);
   }
