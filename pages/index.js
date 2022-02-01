@@ -2,11 +2,12 @@ import Head from "next/head";
 import { useState } from "react";
 
 export default function Home() {
-  const [query, setQuery] = useState("?limit=2&tags=technology&page=2");
+  const [query, setQuery] = useState();
   const [quotes, setQuotes] = useState();
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const { query } = e.target;
     const encodedQuery = btoa(query);
     const response = await fetch(`/quote-api/${encodedQuery}`);
     const data = await response.json();
@@ -42,8 +43,7 @@ export default function Home() {
             type="text"
             name="query"
             id="query"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            value="?limit=2&tags=technology&page=2"
             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
             placeholder="?limit=2&tags=technology"
           />
