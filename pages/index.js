@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 
 export default function Home() {
-  const [query, setQuery] = useState("?limit=2&tags=technology");
+  const [query, setQuery] = useState("?limit=2&tags=technology&page=2");
   const [quotes, setQuotes] = useState();
 
   async function handleSubmit(e) {
