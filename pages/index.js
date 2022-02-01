@@ -7,7 +7,7 @@ export default function Home() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const { query } = e.target;
+    const query = e.target.query.value;
     const encodedQuery = btoa(query);
     const response = await fetch(`/quote-api/${encodedQuery}`);
     const data = await response.json();
@@ -67,14 +67,17 @@ export default function Home() {
         />
       </form>
       <hr />
-      {quotes && (
-        <>
-          <p>Fetched {quotes.count} quotes</p>
-          {quotes.results.map((quote) => {
-            return <blockquote key={quote._id}>{quote.content}</blockquote>;
-          })}
-        </>
-      )}
+      {quotes &&
+        (quotes.count ? (
+          <>
+            <p>Fetched {quotes.count} quotes</p>
+            {quotes.results.map((quote) => {
+              return <blockquote key={quote._id}>{quote.content}</blockquote>;
+            })}
+          </>
+        ) : (
+          <p>Error fetching quotes</p>
+        ))}
     </main>
   );
 }
