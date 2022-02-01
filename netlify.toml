@@ -1,4 +1,4 @@
 [build]
-  command = "cp _redirects public/_redirects && npm run build"
+  command = "cp ./_redirects ./public && npm run build"
   functions = "netlify/functions"
   publish = ".next"
