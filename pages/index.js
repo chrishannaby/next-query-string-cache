@@ -56,7 +56,14 @@ export default function Home() {
         />
       </form>
       <hr />
-      {quotes && <blockquote>{quotes}</blockquote>}
+      {quotes && (
+        <>
+          <p>Fetched {quotes.count} quotes</p>
+          {quotes.results.map((quote) => {
+            return <blockquote key={quote._id}>{quote.content}</blockquote>;
+          })}
+        </>
+      )}
     </main>
   );
 }
